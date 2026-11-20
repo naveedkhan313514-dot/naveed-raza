@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naveed Cloth | Contemporary South Asian Women's Couture</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Configuration for Brand Tokens -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#FAF8F5',
+            alabaster: '#F3EFEA',
+            emerald: {
+              deep: '#0F3D3E',
+              light: '#185758',
+              muted: '#E6EFEF'
+            },
+            gold: {
+              antique: '#C5A059',
+              champagne: '#DFC48C',
+              dark: '#9E7B36'
+            },
+            terracotta: '#9E473B',
+            charcoal: '#1E1E1E',
+            taupe: '#6E665F'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          boxShadow: {
+            'editorial': '0 20px 50px -15px rgba(15, 61, 62, 0.08)',
+            'card': '0 10px 30px -10px rgba(30, 30, 30, 0.06)',
+            'gold': '0 8px 25px -5px rgba(197, 160, 89, 0.35)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Editorial Styling & Subtle Animations */
+    :root {
+      --bg-ivory: #FAF8F5;
+      --emerald-deep: #0F3D3E;
+      --gold-antique: #C5A059;
+      --terracotta: #9E473B;
+      --charcoal: #1E1E1E;
+    }
+
+    body {
+      background-color: var(--bg-ivory);
+      color: var(--charcoal);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-editorial {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* Glassmorphism Sticky Header */
+    .glass-nav {
+      background: rgba(250, 248, 245, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(197, 160, 89, 0.22);
+    }
+
+    /* Subtle Heritage Jaali Pattern Overlay */
+    .jaali-pattern {
+      background-image: radial-gradient(rgba(197, 160, 89, 0.16) 1px, transparent 1px),
+                        radial-gradient(rgba(15, 61, 62, 0.08) 1px, #FAF8F5 1px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F3EFEA;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C5A059;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0F3D3E;
+    }
+
+    /* Product Image Zoom & Hover Transitions */
+    .product-card-img {
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card:hover .product-card-img {
+      transform: scale(1.06);
+    }
+
+    /* Drawer & Modal Animations */
+    .drawer-backdrop {
+      transition: opacity 0.35s ease;
+    }
+    .drawer-panel {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Gold Shimmer Button Effect */
+    .btn-luxury {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .btn-luxury::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      transform: skewX(-25deg);
+      transition: left 0.6s ease;
+    }
+    .btn-luxury:hover::after {
+      left: 150%;
+    }
+
+    /* Print Styles for Order Receipt */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printableReceipt, #printableReceipt * {
+        visibility: visible;
+      }
+      #printableReceipt {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white;
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-emerald-deep selection:text-ivory">
+
+  <!-- Top Editorial Announcement Bar -->
+  <div class="bg-emerald-deep text-ivory text-xs tracking-widest uppercase py-2.5 px-4 text-center border-b border-gold-antique/30">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1">
+      <span class="hidden md:inline text-gold-champagne font-medium">Autumn / Winter '26 Heritage Edit</span>
+      <span>Complimentary Express Nationwide Delivery on Orders Above PKR 12,000 &bull; Use Code <strong class="text-gold-champagne font-semibold">NAVEED10</strong> for 10% Off</span>
+      <div class="flex items-center gap-3">
+        <button id="currencyToggleBtn" onclick="toggleCurrency()" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-gold-champagne px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition cursor-pointer" title="Switch Currency">
+          <span id="currencyLabel">PKR (Rs.)</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 md:h-24">
+        
+        <!-- Mobile Menu Toggle -->
+        <div class="flex items-center lg:hidden">
+          <button onclick="toggleMobileMenu()" aria-label="Open Navigation" class="p-2.5 rounded-xl text-emerald-deep hover:bg-emerald-muted transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h12M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Bespoke Brand Logo (Custom SVG Crest + Refined Serif Typography) -->
+        <a href="#" class="flex items-center gap-3.5 group focus:outline-none">
+          <div class="relative w-12 h-12 md:w-14 md:h-14 flex-shrink-0 transition-transform duration-500 group-hover:scale-105">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-sm">
+              <!-- Outer Octagonal Mughal Arch Frame -->
+              <circle cx="60" cy="60" r="56" fill="#0F3D3E" stroke="#C5A059" stroke-width="2"/>
+              <circle cx="60" cy="60" r="50" stroke="#DFC48C" stroke-width="0.75" stroke-dasharray="3 3"/>
+              <!-- Geometric Diamond Lattice -->
+              <path d="M60 12L108 60L60 108L12 60L60 12Z" stroke="#C5A059" stroke-width="1.2" fill="none" opacity="0.65"/>
+              <path d="M60 20L100 60L60 100L20 60L60 20Z" stroke="#9E473B" stroke-width="1" fill="#0F3D3E"/>
+              <!-- Stylized Paisley / Lotus Petals -->
+              <path d="M60 24C65 34 72 38 60 46C48 38 55 34 60 24Z" fill="#C5A059"/>
+              <path d="M60 96C65 86 72 82 60 74C48 82 55 86 60 96Z" fill="#C5A059"/>
+              <path d="M24 60C34 55 38 48 46 60C38 72 34 65 24 60Z" fill="#DFC48C"/>
+              <path d="M96 60C86 55 82 48 74 60C82 72 86 65 96 60Z" fill="#DFC48C"/>
+              <!-- Central Monogram 'N' with Calligraphy Flourish -->
+              <path d="M47 73V47L73 73V47" stroke="#FAF8F5" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M42 47H50M70 73H78" stroke="#C5A059" stroke-width="2" stroke-linecap="round"/>
+              <!-- Crown Dot -->
+              <circle cx="60" cy="39" r="2.2" fill="#FAF8F5"/>
+              <circle cx="60" cy="81" r="2.2" fill="#FAF8F5"/>
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-editorial text-2xl md:text-3xl font-bold tracking-wider text-emerald-deep leading-none">
+              NAVEED CLOTH
+            </span>
+            <span class="text-[10px] md:text-[11px] uppercase tracking-[0.26em] text-gold-dark font-medium mt-1">
+              Heritage &amp; Elegance
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-charcoal">
+          <a href="#collections" onclick="filterByCategory('All')" class="hover:text-emerald-deep transition relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-gold-antique hover:after:w-full after:transition-all">Collections</a>
+          <a href="#collections" onclick="filterByCategory('3-Piece Suits')" class="hover:text-emerald-deep transition relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-gold-antique hover:after:w-full after:transition-all">3-Piece Suits</a>
+          <a href="#collections" onclick="filterByCategory('Kurta-Dupatta Sets')" class="hover:text-emerald-deep transition relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-gold-antique hover:after:w-full after:transition-all">Kurta-Dupatta</a>
+          <a href="#collections" onclick="filterByCategory('Shalwars')" class="hover:text-emerald-deep transition relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-gold-antique hover:after:w-full after:transition-all">Shalwars</a>
+          <a href="#collections" onclick="filterByCategory('Shawls')" class="hover:text-emerald-deep transition relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-gold-antique hover:after:w-full after:transition-all">Shawls</a>
+          <a href="#palette-guide" class="text-terracotta hover:text-emerald-deep font-semibold transition flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-gold-antique animate-pulse"></span>
+            Color Palettes
+          </a>
+        </nav>
+
+        <!-- Action Icons (Search & Shopping Bag) -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button onclick="focusSearch()" aria-label="Search Catalog" class="p-2.5 rounded-full text-charcoal hover:text-emerald-deep hover:bg-alabaster transition cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+            </svg>
+          </button>
+
+          <button onclick="openCartDrawer()" aria-label="Shopping Bag" class="relative flex items-center gap-2 bg-emerald-deep hover:bg-emerald-light text-ivory px-4 py-2.5 rounded-full transition shadow-sm cursor-pointer">
+            <svg class="w-5 h-5 text-gold-champagne" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+            </svg>
+            <span class="hidden sm:inline text-xs uppercase tracking-wider font-medium">Bag</span>
+            <span id="cartBadge" class="inline-flex items-center justify-center w-5 h-5 text-[11px] font-bold bg-gold-antique text-charcoal rounded-full">
+              0
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-Down Navigation -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-ivory border-t border-gold-antique/20 px-6 py-5 space-y-3 shadow-lg">
+      <a href="#collections" onclick="filterByCategory('All'); toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal hover:text-emerald-deep">All Couture Collections</a>
+      <a href="#collections" onclick="filterByCategory('3-Piece Suits'); toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal hover:text-emerald-deep">3-Piece Embroidered Suits</a>
+      <a href="#collections" onclick="filterByCategory('Kurta-Dupatta Sets'); toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal hover:text-emerald-deep">Workwear Kurta-Dupatta Sets</a>
+      <a href="#collections" onclick="filterByCategory('Shalwars'); toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal hover:text-emerald-deep">Tailored Shalwars &amp; Trousers</a>
+      <a href="#collections" onclick="filterByCategory('Shawls'); toggleMobileMenu()" class="block py-2 text-base font-medium text-charcoal hover:text-emerald-deep">Hand-Loomed Pashmina Shawls</a>
+      <a href="#palette-guide" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-terracotta">Seasonal Color Palette Guide</a>
+    </div>
+  </header>
+
+  <!-- Hero Section: Editorial Showcase -->
+  <section class="relative overflow-hidden jaali-pattern border-b border-gold-antique/25">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        
+        <!-- Left Editorial Copy -->
+        <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-deep/10 border border-emerald-deep/20 text-emerald-deep text-xs font-semibold uppercase tracking-[0.2em]">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold-antique"></span>
+            Contemporary South Asian Couture
+          </div>
+          
+          <h1 class="font-editorial text-4xl sm:text-5xl lg:text-6xl xl:text-[64px] font-semibold text-emerald-deep leading-[1.08]">
+            Woven Grace for the <span class="italic font-normal text-terracotta">Modern Woman</span>
+          </h1>
+          
+          <p class="text-taupe text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+            From boardroom-ready structured kurta-dupatta ensembles to heirloom 3-piece zari suits, sculpted tulip shalwars, and pure Kashmiri Kani shawls—crafted with timeless artistry.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#collections" class="btn-luxury w-full sm:w-auto px-8 py-4 rounded-full bg-emerald-deep hover:bg-emerald-light text-ivory text-xs uppercase tracking-[0.2em] font-semibold shadow-editorial text-center">
+              Explore Couture Edit
+            </a>
+            <a href="#palette-guide" class="w-full sm:w-auto px-8 py-4 rounded-full bg-transparent hover:bg-gold-antique/15 text-emerald-deep border border-gold-antique text-xs uppercase tracking-[0.2em] font-semibold transition text-center">
+              Color &amp; Fabric Guide
+            </a>
+          </div>
+
+          <!-- Editorial Highlights -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-gold-antique/25 max-w-lg mx-auto lg:mx-0">
+            <div>
+              <p class="font-editorial text-2xl sm:text-3xl font-bold text-emerald-deep">100%</p>
+              <p class="text-xs text-taupe mt-0.5">Pure Natural Fibers</p>
+            </div>
+            <div>
+              <p class="font-editorial text-2xl sm:text-3xl font-bold text-emerald-deep">Artisanal</p>
+              <p class="text-xs text-taupe mt-0.5">Hand-Guided Zari &amp; Weave</p>
+            </div>
+            <div>
+              <p class="font-editorial text-2xl sm:text-3xl font-bold text-emerald-deep">Bespoke</p>
+              <p class="text-xs text-taupe mt-0.5">Stitched &amp; Unstitched</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Visual Editorial Collage -->
+        <div class="lg:col-span-6 relative">
+          <div class="relative grid grid-cols-12 gap-4 items-center">
+            <!-- Primary Portrait Frame -->
+            <div class="col-span-7 relative rounded-3xl overflow-hidden shadow-editorial border-2 border-gold-antique/40 bg-alabaster aspect-[3/4]">
+              <img 
+                src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=85" 
+                alt="Luxury Emerald & Gold 3-Piece Couture Ensemble"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x800/0F3D3E/DFC48C?text=Naveed+Cloth+Couture';"
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-emerald-deep/80 via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 text-ivory">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-champagne block">Signature Look 01</span>
+                <p class="font-editorial text-xl font-semibold">Zamarud Raw Silk 3-Piece</p>
+              </div>
+            </div>
+
+            <!-- Secondary Stacked Cards -->
+            <div class="col-span-5 space-y-4">
+              <div class="relative rounded-3xl overflow-hidden shadow-card border border-gold-antique/30 bg-alabaster aspect-[4/5]">
+                <img 
+                  src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=700&q=85" 
+                  alt="Handwoven Kashmiri Shawl & Kurta"
+                  onerror="this.onerror=null; this.src='https://placehold.co/500x625/9E473B/FAF8F5?text=Heritage+Shawls';"
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 text-ivory">
+                  <span class="text-[10px] uppercase tracking-[0.2em] text-gold-champagne block">Artisan Loom</span>
+                  <p class="font-editorial text-lg font-medium">Kani Pashmina Shawls</p>
+                </div>
+              </div>
+
+              <!-- Craftsmanship Callout Card -->
+              <div class="rounded-3xl bg-emerald-deep text-ivory p-5 border border-gold-antique/40 shadow-card">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-[10px] uppercase tracking-[0.22em] text-gold-champagne">Executive Edit</span>
+                  <svg class="w-4 h-4 text-gold-antique" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <p class="font-editorial text-xl leading-snug text-ivory">
+                  Tailored Silhouettes for Everyday Authority &amp; Grace
+                </p>
+                <button onclick="filterByCategory('Kurta-Dupatta Sets'); document.getElementById('collections').scrollIntoView({behavior:'smooth'})" class="mt-3 inline-flex items-center gap-1.5 text-xs text-gold-champagne hover:text-ivory font-medium transition cursor-pointer">
+                  Shop Workwear Sets
+                  <span>&rarr;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Seasonal Color Palette & Fabric Swatch Guide -->
+  <section id="palette-guide" class="py-16 md:py-20 bg-alabaster/70 border-b border-gold-antique/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="text-xs uppercase tracking-[0.25em] text-gold-dark font-semibold block mb-2">Curated Color Harmonies</span>
+          <h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-semibold text-emerald-deep">
+            Seasonal Palette &amp; Swatch Guide
+          </h2>
+        </div>
+        <p class="text-sm text-taupe max-w-md">
+          Select a curated color story below to explore how our master dyers pair heritage pigments with fine weaves—and filter matching outfits instantly.
+        </p>
+      </div>
+
+      <!-- Interactive Color Palette Cards -->
+      <div id="paletteCardsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Populated via JS for interactive selection -->
+      </div>
+
+      <!-- Active Palette Filter Indicator -->
+      <div id="activePaletteBanner" class="hidden mt-6 p-4 rounded-2xl bg-emerald-deep text-ivory flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-gold-antique"></span>
+          <span class="text-sm">Showing designs curated in <strong id="activePaletteTitle" class="text-gold-champagne font-semibold"></strong></span>
+        </div>
+        <button onclick="clearPaletteFilter()" class="text-xs uppercase tracking-wider bg-white/15 hover:bg-white/25 px-4 py-1.5 rounded-full transition cursor-pointer">
+          Reset Palette Filter
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Couture Catalog Section -->
+  <section id="collections" class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Heading -->
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-[0.25em] text-terracotta font-semibold block mb-2">The Atelier Catalog</span>
+        <h2 class="font-editorial text-4xl sm:text-5xl font-semibold text-emerald-deep">
+          Signature Women's Silhouettes
+        </h2>
+        <p class="text-taupe text-sm sm:text-base mt-3">
+          Explore our four foundational pillars: statement 3-piece suits, crisp office-to-evening kurta-dupatta sets, sculpted shalwars, and heirloom hand-loomed shawls.
+        </p>
+      </div>
+
+      <!-- Category Filter Tabs, Search & Sort Controls -->
+      <div class="bg-white/80 backdrop-blur-md p-4 sm:p-5 rounded-3xl border border-gold-antique/25 shadow-card mb-10">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          
+          <!-- Category Filter Pills -->
+          <div id="categoryTabs" class="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 no-scrollbar">
+            <button onclick="filterByCategory('All')" data-cat="All" class="cat-tab active px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold transition whitespace-nowrap cursor-pointer bg-emerald-deep text-ivory shadow-sm">
+              All Designs
+            </button>
+            <button onclick="filterByCategory('3-Piece Suits')" data-cat="3-Piece Suits" class="cat-tab px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold transition whitespace-nowrap cursor-pointer bg-alabaster text-charcoal hover:bg-emerald-muted">
+              3-Piece Suits
+            </button>
+            <button onclick="filterByCategory('Kurta-Dupatta Sets')" data-cat="Kurta-Dupatta Sets" class="cat-tab px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold transition whitespace-nowrap cursor-pointer bg-alabaster text-charcoal hover:bg-emerald-muted">
+              Kurta-Dupatta Sets
+            </button>
+            <button onclick="filterByCategory('Shalwars')" data-cat="Shalwars" class="cat-tab px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold transition whitespace-nowrap cursor-pointer bg-alabaster text-charcoal hover:bg-emerald-muted">
+              Shalwars &amp; Trousers
+            </button>
+            <button onclick="filterByCategory('Shawls')" data-cat="Shawls" class="cat-tab px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold transition whitespace-nowrap cursor-pointer bg-alabaster text-charcoal hover:bg-emerald-muted">
+              Shawls
+            </button>
+          </div>
+
+          <!-- Search & Sort Controls -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div class="relative flex-1 sm:w-60">
+              <input 
+                type="text" 
+                id="searchInput" 
+                oninput="handleSearch(this.value)" 
+                placeholder="Search fabric, style, weave..." 
+                class="w-full pl-10 pr-4 py-2.5 rounded-full bg-ivory border border-gold-antique/30 text-sm text-charcoal placeholder-taupe/70 focus:outline-none focus:border-emerald-deep transition"
+              />
+              <svg class="w-4 h-4 text-taupe absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+              </svg>
+            </div>
+
+            <select id="sortSelect" onchange="handleSort(this.value)" aria-label="Sort Products" class="px-4 py-2.5 rounded-full bg-ivory border border-gold-antique/30 text-sm text-charcoal focus:outline-none focus:border-emerald-deep cursor-pointer">
+              <option value="featured">Sort: Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
+        <!-- Dynamically rendered via JavaScript -->
+      </div>
+
+      <!-- Empty State if Search/Filter Matches Nothing -->
+      <div id="emptyCatalogState" class="hidden text-center py-16 px-4 bg-alabaster/60 rounded-3xl border border-gold-antique/20">
+        <p class="font-editorial text-3xl text-emerald-deep mb-2">No Couture Pieces Found</p>
+        <p class="text-sm text-taupe mb-6">Try adjusting your category filter, color palette selection, or search keywords.</p>
+        <button onclick="resetAllFilters()" class="px-6 py-3 rounded-full bg-emerald-deep text-ivory text-xs uppercase tracking-widest font-semibold hover:bg-emerald-light transition cursor-pointer">
+          View All Collections
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Editorial Craftsmanship & Silhouette Styling Banner -->
+  <section class="py-16 bg-emerald-deep text-ivory relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gold-antique/25">
+        <div class="pt-4 md:pt-0 md:px-6 first:pl-0">
+          <span class="text-gold-champagne font-editorial italic text-2xl">01. Executive Precision</span>
+          <h3 class="font-editorial text-2xl font-semibold mt-1 mb-2">Boardroom Kurta-Dupattas</h3>
+          <p class="text-ivory/80 text-sm leading-relaxed">
+            Breathable hand-spun cotton-silk and Swiss voile tailored with crisp collars, French seams, and featherlight tissue dupattas for effortless all-day authority.
+          </p>
+        </div>
+        <div class="pt-6 md:pt-0 md:px-6">
+          <span class="text-gold-champagne font-editorial italic text-2xl">02. Heirloom Weaves</span>
+          <h3 class="font-editorial text-2xl font-semibold mt-1 mb-2">3-Piece Zari &amp; Raw Silk</h3>
+          <p class="text-ivory/80 text-sm leading-relaxed">
+            Intricate tilla, resham, and block-printed motifs engineered on pure raw silk and organza, complete with matching dyed trousers and embroidered borders.
+          </p>
+        </div>
+        <div class="pt-6 md:pt-0 md:px-6">
+          <span class="text-gold-champagne font-editorial italic text-2xl">03. Kashmiri Heritage</span>
+          <h3 class="font-editorial text-2xl font-semibold mt-1 mb-2">Pashmina &amp; Velvet Shawls</h3>
+          <p class="text-ivory/80 text-sm leading-relaxed">
+            Authentic Kani-woven pashminas and micro-velvet shawls adorned with antique gold borders—designed to elevate any monotone kurta or winter ensemble.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
+  <footer class="bg-charcoal text-ivory/85 pt-16 pb-10 border-t border-gold-antique/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Brand Column -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <svg viewBox="0 0 120 120" fill="none" class="w-10 h-10">
+              <circle cx="60" cy="60" r="56" fill="#0F3D3E" stroke="#C5A059" stroke-width="2.5"/>
+              <path d="M60 16L104 60L60 104L16 60L60 16Z" stroke="#C5A059" stroke-width="1.5"/>
+              <path d="M47 73V47L73 73V47" stroke="#FAF8F5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <span class="font-editorial text-2xl font-bold tracking-wider text-ivory block leading-none">NAVEED CLOTH</span>
+              <span class="text-[10px] uppercase tracking-[0.25em] text-gold-champagne">Heritage &amp; Elegance</span>
+            </div>
+          </div>
+          <p class="text-sm text-ivory/65 leading-relaxed">
+            Celebrating South Asian textile heritage through refined contemporary silhouettes for discerning women across the globe.
+          </p>
+        </div>
+
+        <!-- Collections Links -->
+        <div>
+          <h4 class="font-editorial text-xl text-gold-champagne font-semibold mb-4">Collections</h4>
+          <ul class="space-y-2.5 text-sm text-ivory/70">
+            <li><a href="#collections" onclick="filterByCategory('3-Piece Suits')" class="hover:text-gold-champagne transition">3-Piece Luxury Suits</a></li>
+            <li><a href="#collections" onclick="filterByCategory('Kurta-Dupatta Sets')" class="hover:text-gold-champagne transition">Professional Kurta-Dupatta Sets</a></li>
+            <li><a href="#collections" onclick="filterByCategory('Shalwars')" class="hover:text-gold-champagne transition">Tulip Shalwars &amp; Trousers</a></li>
+            <li><a href="#collections" onclick="filterByCategory('Shawls')" class="hover:text-gold-champagne transition">Pashmina &amp; Velvet Shawls</a></li>
+          </ul>
+        </div>
+
+        <!-- Client Concierge -->
+        <div>
+          <h4 class="font-editorial text-xl text-gold-champagne font-semibold mb-4">Client Concierge</h4>
+          <ul class="space-y-2.5 text-sm text-ivory/70">
+            <li><button onclick="openSizeGuideModal()" class="hover:text-gold-champagne transition cursor-pointer">Bespoke Size &amp; Fit Chart</button></li>
+            <li><a href="#palette-guide" class="hover:text-gold-champagne transition">Fabric Care &amp; Color Swatches</a></li>
+            <li><button onclick="openCartDrawer()" class="hover:text-gold-champagne transition cursor-pointer">Track Bag &amp; Checkout</button></li>
+            <li><span class="text-ivory/50">WhatsApp Atelier: +92 300 845 9910</span></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4 class="font-editorial text-xl text-gold-champagne font-semibold mb-4">Private Preview List</h4>
+          <p class="text-sm text-ivory/65 mb-4">Receive early access to seasonal festive drops and exclusive atelier privileges.</p>
+          <form onsubmit="handleNewsletter(event)" class="flex gap-2">
+            <input type="email" required placeholder="Your email address" class="w-full px-4 py-2.5 rounded-full bg-white/10 border border-gold-antique/30 text-sm text-ivory placeholder-ivory/40 focus:outline-none focus:border-gold-champagne"/>
+            <button type="submit" class="px-5 py-2.5 rounded-full bg-gold-antique hover:bg-gold-champagne text-charcoal text-xs uppercase tracking-wider font-bold transition cursor-pointer">
+              Join
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-ivory/50 gap-4">
+        <p>&copy; 2026 Naveed Cloth Couture House. All rights reserved.</p>
+        <div class="flex items-center gap-4">
+          <span>Cash on Delivery</span>
+          <span>&bull;</span>
+          <span>Visa / Mastercard</span>
+          <span>&bull;</span>
+          <span>JazzCash &amp; EasyPaisa</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- PRODUCT QUICK-VIEW MODAL                                              -->
+  <!-- ===================================================================== -->
+  <div id="quickViewModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-charcoal/70 backdrop-blur-sm">
+    <div class="bg-ivory rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gold-antique/40 relative animate-fadeIn">
+      
+      <!-- Close Button -->
+      <button onclick="closeQuickView()" aria-label="Close Quick View" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 hover:bg-emerald-deep text-charcoal hover:text-ivory flex items-center justify-center shadow-md transition cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div id="quickViewContent" class="grid grid-cols-1 md:grid-cols-12">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- SIZE GUIDE MODAL                                                      -->
+  <!-- ===================================================================== -->
+  <div id="sizeGuideModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-charcoal/70 backdrop-blur-sm">
+    <div class="bg-ivory rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-gold-antique/40 relative">
+      <button onclick="closeSizeGuideModal()" aria-label="Close Size Guide" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-alabaster hover:bg-emerald-deep text-charcoal hover:text-ivory flex items-center justify-center transition cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <span class="text-xs uppercase tracking-[0.2em] text-gold-dark font-semibold">Atelier Measurements</span>
+      <h3 class="font-editorial text-3xl font-semibold text-emerald-deep mt-1 mb-4">Standard Women's Size Chart (Inches)</h3>
+      <div class="overflow-x-auto rounded-2xl border border-gold-antique/25">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-emerald-deep text-ivory text-xs uppercase tracking-wider">
+            <tr>
+              <th class="py-3 px-4">Size</th>
+              <th class="py-3 px-4">Chest</th>
+              <th class="py-3 px-4">Waist</th>
+              <th class="py-3 px-4">Hip</th>
+              <th class="py-3 px-4">Kurta Length</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gold-antique/15 bg-white">
+            <tr><td class="py-3 px-4 font-semibold">XS</td><td class="py-3 px-4">34"</td><td class="py-3 px-4">28"</td><td class="py-3 px-4">36"</td><td class="py-3 px-4">42"</td></tr>
+            <tr><td class="py-3 px-4 font-semibold">S</td><td class="py-3 px-4">36"</td><td class="py-3 px-4">30"</td><td class="py-3 px-4">38"</td><td class="py-3 px-4">43"</td></tr>
+            <tr><td class="py-3 px-4 font-semibold">M</td><td class="py-3 px-4">38"</td><td class="py-3 px-4">32"</td><td class="py-3 px-4">40"</td><td class="py-3 px-4">44"</td></tr>
+            <tr><td class="py-3 px-4 font-semibold">L</td><td class="py-3 px-4">41"</td><td class="py-3 px-4">35"</td><td class="py-3 px-4">43"</td><td class="py-3 px-4">45"</td></tr>
+            <tr><td class="py-3 px-4 font-semibold">XL</td><td class="py-3 px-4">44"</td><td class="py-3 px-4">38"</td><td class="py-3 px-4">46"</td><td class="py-3 px-4">46"</td></tr>
+            <tr class="bg-alabaster/70"><td class="py-3 px-4 font-semibold text-emerald-deep">Unstitched</td><td colspan="4" class="py-3 px-4 text-taupe">Includes 3.0m Shirt Fabric, 2.5m Trouser Fabric &amp; 2.5m Dupatta with Embroidered Borders</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- SLIDE-OUT SHOPPING BAG DRAWER                                         -->
+  <!-- ===================================================================== -->
+  <div id="cartDrawerBackdrop" onclick="closeCartDrawer()" class="fixed inset-0 z-50 hidden bg-charcoal/60 backdrop-blur-xs drawer-backdrop opacity-0"></div>
+  
+  <aside id="cartDrawerPanel" class="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-ivory shadow-2xl border-l border-gold-antique/30 flex flex-col transform translate-x-full drawer-panel">
+    
+    <!-- Drawer Header -->
+    <div class="px-6 py-5 bg-emerald-deep text-ivory flex items-center justify-between border-b border-gold-antique/30">
+      <div>
+        <h3 class="font-editorial text-2xl font-semibold tracking-wide">Your Couture Bag</h3>
+        <p id="drawerItemCountText" class="text-xs text-gold-champagne">0 items selected</p>
+      </div>
+      <button onclick="closeCartDrawer()" aria-label="Close Bag" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-ivory transition cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Drawer Items List -->
+    <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+      <!-- Populated dynamically via JS -->
+    </div>
+
+    <!-- Drawer Footer: Promo Code & Checkout -->
+    <div id="cartDrawerFooter" class="p-6 bg-alabaster border-t border-gold-antique/25 space-y-4">
+      <!-- Promo Code Input -->
+      <div>
+        <div class="flex gap-2">
+          <input 
+            type="text" 
+            id="promoCodeInput" 
+            placeholder="Promo code (Try NAVEED10)" 
+            class="flex-1 px-4 py-2.5 rounded-full bg-white border border-gold-antique/35 text-xs uppercase tracking-wider text-charcoal focus:outline-none focus:border-emerald-deep"
+          />
+          <button onclick="applyPromoCode()" class="px-5 py-2.5 rounded-full bg-charcoal hover:bg-emerald-deep text-ivory text-xs uppercase tracking-wider font-semibold transition cursor-pointer">
+            Apply
+          </button>
+        </div>
+        <p id="promoFeedback" class="text-xs mt-1.5 hidden"></p>
+      </div>
+
+      <!-- Price Breakdown -->
+      <div class="space-y-1.5 text-sm border-t border-gold-antique/20 pt-3">
+        <div class="flex justify-between text-taupe">
+          <span>Subtotal</span>
+          <span id="cartSubtotal" class="font-medium text-charcoal">PKR 0</span>
+        </div>
+        <div id="discountRow" class="hidden flex justify-between text-emerald-deep font-medium">
+          <span>Atelier Privilege (<span id="appliedPromoLabel">NAVEED10</span>)</span>
+          <span id="cartDiscount">- PKR 0</span>
+        </div>
+        <div class="flex justify-between text-taupe">
+          <span>Express Shipping</span>
+          <span id="cartShipping" class="font-medium text-emerald-deep">Complimentary</span>
+        </div>
+        <div class="flex justify-between text-base font-bold text-emerald-deep pt-2 border-t border-gold-antique/20">
+          <span>Estimated Total</span>
+          <span id="cartTotal" class="font-editorial text-2xl">PKR 0</span>
+        </div>
+      </div>
+
+      <button onclick="openCheckoutModal()" class="btn-luxury w-full py-4 rounded-full bg-emerald-deep hover:bg-emerald-light text-ivory text-xs uppercase tracking-[0.2em] font-semibold shadow-editorial transition cursor-pointer">
+        Proceed to Secure Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- ===================================================================== -->
+  <!-- INTERACTIVE CHECKOUT & ORDER CONFIRMATION MODAL                       -->
+  <!-- ===================================================================== -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-charcoal/75 backdrop-blur-sm">
+    <div class="bg-ivory rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-gold-antique/40 relative">
+      
+      <!-- Modal Top Bar -->
+      <div class="sticky top-0 z-20 bg-emerald-deep text-ivory px-6 py-4 flex items-center justify-between border-b border-gold-antique/30">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-gold-champagne"></span>
+          <h3 class="font-editorial text-2xl font-semibold">Naveed Cloth — Atelier Checkout</h3>
+        </div>
+        <button onclick="closeCheckoutModal()" aria-label="Close Checkout" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-ivory transition cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Step 1: Checkout Form View -->
+      <div id="checkoutFormView" class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Shipping & Payment Form (7 Cols) -->
+        <form id="orderForm" onsubmit="submitOrder(event)" class="lg:col-span-7 space-y-6">
+          <div>
+            <h4 class="font-editorial text-2xl font-semibold text-emerald-deep mb-3">1. Delivery Details</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="sm:col-span-2">
+                <label class="block text-xs uppercase tracking-wider text-taupe font-semibold mb-1.5">Full Name *</label>
+                <input type="text" id="custName" required placeholder="e.g. Ayesha Tariq" class="w-full px-4 py-3 rounded-xl bg-white border border-gold-antique/35 text-sm focus:outline-none focus:border-emerald-deep"/>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-taupe font-semibold mb-1.5">Mobile Number *</label>
+                <input type="tel" id="custPhone" required placeholder="+92 300 1234567" class="w-full px-4 py-3 rounded-xl bg-white border border-gold-antique/35 text-sm focus:outline-none focus:border-emerald-deep"/>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-taupe font-semibold mb-1.5">Email Address *</label>
+                <input type="email" id="custEmail" required placeholder="ayesha@example.com" class="w-full px-4 py-3 rounded-xl bg-white border border-gold-antique/35 text-sm focus:outline-none focus:border-emerald-deep"/>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-taupe font-semibold mb-1.5">City *</label>
+                <select id="custCity" required class="w-full px-4 py-3 rounded-xl bg-white border border-gold-antique/35 text-sm focus:outline-none focus:border-emerald-deep">
+                  <option value="Lahore">Lahore</option>
+                  <option value="Islamabad">Islamabad</option>
+                  <option value="Rawalpindi">Rawalpindi</option>
+                  <option value="Karachi">Karachi</option>
+                  <option value="Faisalabad">Faisalabad</option>
+                  <option value="Multan">Multan</option>
+                  <option value="Peshawar">Peshawar</option>
+                  <option value="International Delivery">International Delivery</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-taupe font-semibold mb-1.5">Postal Code</label>
+                <input type="text" id="custZip" placeholder="e.g. 46000" class="w-full px-4 py-3 rounded-xl bg-white border border-gold-antique/35 text-sm focus:outline-none focus:border-emerald-deep"/>
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-xs uppercase tracking-wider text-taupe font-semibold mb-1.5">Complete Street Address *</label>
+                <textarea id="custAddress" rows="2" required placeholder="House/Apartment number, Street, Sector/Phase..." class="w-full px-4 py-3 rounded-xl bg-white border border-gold-antique/35 text-sm focus:outline-none focus:border-emerald-deep"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Method Selection -->
+          <div>
+            <h4 class="font-editorial text-2xl font-semibold text-emerald-deep mb-3">2. Payment Method</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <label class="cursor-pointer">
+                <input type="radio" name="paymentMethod" value="Cash on Delivery" checked onchange="togglePaymentFields(this.value)" class="peer sr-only"/>
+                <div class="p-3.5 rounded-2xl border border-gold-antique/35 bg-white peer-checked:border-emerald-deep peer-checked:bg-emerald-muted/50 transition text-center">
+                  <span class="block text-xs font-bold text-emerald-deep">Cash on Delivery</span>
+                  <span class="block text-[11px] text-taupe mt-0.5">Pay upon arrival</span>
+                </div>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="radio" name="paymentMethod" value="Credit / Debit Card" onchange="togglePaymentFields(this.value)" class="peer sr-only"/>
+                <div class="p-3.5 rounded-2xl border border-gold-antique/35 bg-white peer-checked:border-emerald-deep peer-checked:bg-emerald-muted/50 transition text-center">
+                  <span class="block text-xs font-bold text-emerald-deep">Card Payment</span>
+                  <span class="block text-[11px] text-taupe mt-0.5">Visa / Mastercard</span>
+                </div>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="radio" name="paymentMethod" value="JazzCash / EasyPaisa" onchange="togglePaymentFields(this.value)" class="peer sr-only"/>
+                <div class="p-3.5 rounded-2xl border border-gold-antique/35 bg-white peer-checked:border-emerald-deep peer-checked:bg-emerald-muted/50 transition text-center">
+                  <span class="block text-xs font-bold text-emerald-deep">Mobile Wallet</span>
+                  <span class="block text-[11px] text-taupe mt-0.5">JazzCash / EasyPaisa</span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Dynamic Card Details Box -->
+            <div id="cardPaymentFields" class="hidden mt-4 p-4 rounded-2xl bg-alabaster border border-gold-antique/30 space-y-3">
+              <div>
+                <label class="block text-[11px] uppercase tracking-wider text-taupe font-semibold mb-1">Card Number</label>
+                <input type="text" id="cardNumberInput" maxlength="19" oninput="formatCardNumber(this)" placeholder="4532 •••• •••• 8890" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-gold-antique/30 text-sm"/>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[11px] uppercase tracking-wider text-taupe font-semibold mb-1">Expiry (MM/YY)</label>
+                  <input type="text" maxlength="5" placeholder="09/29" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-gold-antique/30 text-sm"/>
+                </div>
+                <div>
+                  <label class="block text-[11px] uppercase tracking-wider text-taupe font-semibold mb-1">CVV</label>
+                  <input type="password" maxlength="4" placeholder="•••" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-gold-antique/30 text-sm"/>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic Wallet Box -->
+            <div id="walletPaymentFields" class="hidden mt-4 p-4 rounded-2xl bg-alabaster border border-gold-antique/30">
+              <p class="text-xs text-charcoal">
+                Transfer directly to <strong>Naveed Cloth Official Merchant Account (0300-8459910)</strong> or enter your wallet number below for an instant payment prompt:
+              </p>
+              <input type="tel" placeholder="03XX-XXXXXXX Wallet Account" class="mt-2.5 w-full px-3.5 py-2.5 rounded-xl bg-white border border-gold-antique/30 text-sm"/>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-luxury w-full py-4 rounded-full bg-emerald-deep hover:bg-emerald-light text-ivory text-xs uppercase tracking-[0.2em] font-semibold shadow-editorial cursor-pointer">
+            Confirm &amp; Place Couture Order
+          </button>
+        </form>
+
+        <!-- Order Summary Sidebar (5 Cols) -->
+        <div class="lg:col-span-5 bg-alabaster rounded-2xl p-6 border border-gold-antique/25 flex flex-col justify-between">
+          <div>
+            <h4 class="font-editorial text-2xl font-semibold text-emerald-deep pb-3 border-b border-gold-antique/20">Order Summary</h4>
+            <div id="checkoutSummaryItems" class="divide-y divide-gold-antique/15 max-h-64 overflow-y-auto my-3 pr-1">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-4 border-t border-gold-antique/25 text-sm">
+            <div class="flex justify-between text-taupe">
+              <span>Bag Subtotal</span>
+              <span id="checkoutSubtotal" class="font-medium text-charcoal">PKR 0</span>
+            </div>
+            <div id="checkoutDiscountRow" class="hidden flex justify-between text-emerald-deep font-medium">
+              <span>Promo Discount</span>
+              <span id="checkoutDiscount">- PKR 0</span>
+            </div>
+            <div class="flex justify-between text-taupe">
+              <span>Shipping &amp; Packaging</span>
+              <span id="checkoutShipping" class="text-emerald-deep font-medium">Complimentary</span>
+            </div>
+            <div class="flex justify-between text-lg font-bold text-emerald-deep pt-2 border-t border-gold-antique/25">
+              <span>Total Payable</span>
+              <span id="checkoutGrandTotal" class="font-editorial text-2xl">PKR 0</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Step 2: Animated Order Confirmation & Printable Receipt -->
+      <div id="orderConfirmationView" class="hidden p-6 sm:p-10 text-center">
+        <div id="printableReceipt" class="max-w-xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-gold-antique/40 shadow-editorial text-left">
+          <div class="text-center pb-6 border-b border-gold-antique/25">
+            <div class="w-16 h-16 rounded-full bg-emerald-deep text-gold-champagne flex items-center justify-center mx-auto mb-4 shadow-gold">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="text-xs uppercase tracking-[0.25em] text-gold-dark font-semibold">Order Confirmed</span>
+            <h3 class="font-editorial text-3xl sm:text-4xl font-bold text-emerald-deep mt-1">Thank You for Choosing Naveed Cloth</h3>
+            <p class="text-sm text-taupe mt-2">Your bespoke couture order has been received by our atelier.</p>
+          </div>
+
+          <div class="py-5 border-b border-gold-antique/20 grid grid-cols-2 gap-4 text-xs sm:text-sm">
+            <div>
+              <span class="text-taupe block">Order Reference</span>
+              <strong id="receiptOrderId" class="text-emerald-deep font-mono text-base">#NC-2026-8841</strong>
+            </div>
+            <div class="text-right">
+              <span class="text-taupe block">Order Date</span>
+              <strong id="receiptDate" class="text-charcoal">Nov 21, 2026</strong>
+            </div>
+            <div>
+              <span class="text-taupe block">Client Name</span>
+              <strong id="receiptCustomer" class="text-charcoal">Ayesha Tariq</strong>
+            </div>
+            <div class="text-right">
+              <span class="text-taupe block">Payment Method</span>
+              <strong id="receiptPayment" class="text-charcoal">Cash on Delivery</strong>
+            </div>
+            <div class="col-span-2">
+              <span class="text-taupe block">Delivery Destination</span>
+              <strong id="receiptAddress" class="text-charcoal">Lahore, Pakistan</strong>
+            </div>
+          </div>
+
+          <div id="receiptItemsList" class="py-4 divide-y divide-gold-antique/15 text-sm">
+            <!-- Populated via JS -->
+          </div>
+
+          <div class="pt-4 border-t border-gold-antique/30 flex justify-between items-center">
+            <span class="text-sm font-semibold text-taupe uppercase tracking-wider">Total Amount</span>
+            <span id="receiptTotalAmount" class="font-editorial text-3xl font-bold text-emerald-deep">PKR 0</span>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button onclick="window.print()" class="px-7 py-3.5 rounded-full bg-alabaster hover:bg-gold-antique/20 text-emerald-deep border border-gold-antique text-xs uppercase tracking-widest font-semibold transition cursor-pointer">
+            Print / Save Receipt
+          </button>
+          <button onclick="finishOrderAndReset()" class="px-8 py-3.5 rounded-full bg-emerald-deep hover:bg-emerald-light text-ivory text-xs uppercase tracking-widest font-semibold transition cursor-pointer">
+            Continue Exploring Collections
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- ===================================================================== -->
+  <!-- APPLICATION LOGIC & CURATED COUTURE DATA                              -->
+  <!-- ===================================================================== -->
+  <script>
+    // Exchange Rate for Currency Toggle (1 USD = 278 PKR)
+    const PKR_TO_USD_RATE = 278;
+    let currentCurrency = 'PKR';
+
+    // Curated Seasonal Color Palettes
+    const SEASONAL_PALETTES = [
+      {
+        id: 'emerald-gold',
+        name: 'Royal Emerald & Antique Gold',
+        season: 'Festive & Evening Couture',
+        description: 'Deep forest emerald paired with hand-burnished tilla gold for commanding elegance.',
+        swatches: [
+          { hex: '#0F3D3E', label: 'Zamarud' },
+          { hex: '#C5A059', label: 'Antique Zari' },
+          { hex: '#FAF8F5', label: 'Raw Ivory' }
+        ],
+        fabricTag: 'Pure Raw Silk & Organza'
+      },
+      {
+        id: 'rose-ivory',
+        name: 'Dusty Rose & Alabaster',
+        season: 'Daytime Soirée & Executive',
+        description: 'Soft heirloom rose balanced with crisp alabaster weaves for understated sophistication.',
+        swatches: [
+          { hex: '#C48B8B', label: 'Gulab Rose' },
+          { hex: '#F3EFEA', label: 'Alabaster' },
+          { hex: '#9E7B36', label: 'Muted Brass' }
+        ],
+        fabricTag: 'Swiss Voile & Chiffon'
+      },
+      {
+        id: 'indigo-silver',
+        name: 'Midnight Indigo & Silver Zari',
+        season: 'Boardroom & Twilight Edit',
+        description: 'Regal midnight slate accented with cool silver-grey threadwork and structured tailoring.',
+        swatches: [
+          { hex: '#1E2D3D', label: 'Neel Indigo' },
+          { hex: '#B8C0C8', label: 'Silver Tilla' },
+          { hex: '#4A5D6E', label: 'Slate Mist' }
+        ],
+        fabricTag: 'Hand-Spun Cotton Silk'
+      },
+      {
+        id: 'terracotta-ochre',
+        name: 'Terracotta & Warm Ochre',
+        season: 'Autumn Heritage Loom',
+        description: 'Earthy kiln terracotta and saffron ochre inspired by centuries-old Kashmiri Kani shawls.',
+        swatches: [
+          { hex: '#9E473B', label: 'Gerua Rust' },
+          { hex: '#D49A42', label: 'Saffron Ochre' },
+          { hex: '#3B2820', label: 'Espresso' }
+        ],
+        fabricTag: 'Pashmina & Micro-Velvet'
+      }
+    ];
+
+    // Comprehensive Product Catalog across 4 Core Categories
+    const PRODUCTS = [
+      {
+        id: 'nc-3p-01',
+        name: 'Zamarud Zari 3-Piece Raw Silk Suit',
+        category: '3-Piece Suits',
+        paletteId: 'emerald-gold',
+        pricePKR: 18500,
+        fabric: 'Pure 80g Raw Silk Shirt & Trouser with Embroidered Organza Dupatta',
+        craftsmanship: 'Hand-guided antique gold tilla and resham embroidery along the neckline and hemline, paired with a four-sided scalloped organza dupatta.',
+        badge: 'Bestseller',
+        sizes: ['XS', 'S', 'M', 'L', 'XL', 'Unstitched'],
+        colors: [
+          { name: 'Royal Emerald', hex: '#0F3D3E', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85' },
+          { name: 'Deep Maroon', hex: '#6B1D2F', image: 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=800&q=85' }
+        ]
+      },
+      {
+        id: 'nc-3p-02',
+        name: 'Gulab Mahal 3-Piece Embroidered Lawn',
+        category: '3-Piece Suits',
+        paletteId: 'rose-ivory',
+        pricePKR: 11800,
+        fabric: '100% Egyptian Cotton Lawn with Pure Crinkle Chiffon Dupatta',
+        craftsmanship: 'Delicate floral schiffli panels in dusty rose and ivory, complemented by a digitally block-printed pure chiffon dupatta.',
+        badge: 'New Arrival',
+        sizes: ['XS', 'S', 'M', 'L', 'XL', 'Unstitched'],
+        colors: [
+          { name: 'Dusty Rose', hex: '#C48B8B', image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=85' },
+          { name: 'Warm Ivory', hex: '#EDE6D6', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85' }
+        ]
+      },
+      {
+        id: 'nc-3p-03',
+        name: 'Neelam Nocturne 3-Piece Jacquard Suit',
+        category: '3-Piece Suits',
+        paletteId: 'indigo-silver',
+        pricePKR: 15900,
+        fabric: 'Self-Woven Banarsi Cotton Jacquard with Silver Zari Tissue Dupatta',
+        craftsmanship: 'Loom-woven geometric motifs in midnight indigo with silver-thread borders—tailored for formal dinners and evening receptions.',
+        badge: 'Limited Edition',
+        sizes: ['S', 'M', 'L', 'XL', 'Unstitched'],
+        colors: [
+          { name: 'Midnight Indigo', hex: '#1E2D3D', image: 'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=800&q=85' },
+          { name: 'Slate Mist', hex: '#4A5D6E', image: 'https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=800&q=85' }
+        ]
+      },
+      {
+        id: 'nc-kd-01',
+        name: 'Afsana Executive Kurta-Dupatta Set',
+        category: 'Kurta-Dupatta Sets',
+        paletteId: 'emerald-gold',
+        pricePKR: 8900,
+        fabric: 'Breathable Hand-Spun Cotton Silk Kurta & Woven Zari Kota Dupatta',
+        craftsmanship: 'Structured A-line workwear kurta with mandarin collar, French seams, and minimalist cuff embroidery for effortless professional poise.',
+        badge: 'Workwear Edit',
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Alabaster & Gold', hex: '#EAE3D5', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85' },
+          { name: 'Forest Sage', hex: '#2F5249', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85' }
+        ]
+      },
+      {
+        id: 'nc-kd-02',
+        name: 'Sufi Slate Striped Kurta-Dupatta',
+        category: 'Kurta-Dupatta Sets',
+        paletteId: 'indigo-silver',
+        pricePKR: 8400,
+        fabric: 'Fine Yarn-Dyed Cambric Kurta with Hand-Block Mulmul Dupatta',
+        craftsmanship: 'Vertical dobby weave stripes elongate the silhouette; paired with a featherlight mulmul dupatta finished with hand-knotted tassels.',
+        badge: 'Office Essential',
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Indigo Stripe', hex: '#283B4E', image: 'https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=800&q=85' },
+          { name: 'Charcoal Ash', hex: '#3A3A3A', image: 'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=800&q=85' }
+        ]
+      },
+      {
+        id: 'nc-kd-03',
+        name: 'Gerua Terracotta Pleated Kurta Set',
+        category: 'Kurta-Dupatta Sets',
+        paletteId: 'terracotta-ochre',
+        pricePKR: 9600,
+        fabric: 'Slub Khaddar Silk Kurta with Chanderi Silk Dupatta',
+        craftsmanship: 'Pintuck bodice detailing in warm kiln terracotta paired with a luminous golden-ochre Chanderi dupatta.',
+        badge: 'Artisan Pick',
+        sizes: ['S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Terracotta Rust', hex: '#9E473B', image: 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=800&q=85' },
+          { name: 'Saffron Ochre', hex: '#D49A42', image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=85' }
+        ]
+      },
+      {
+        id: 'nc-shl-01',
+        name: 'Nawab Sculpted Tulip Shalwar',
+        category: 'Shalwars',
+        paletteId: 'rose-ivory',
+        pricePKR: 4200,
+        fabric: 'Heavyweight Korean Raw Silk with Pearl Edge Finishing',
+        craftsmanship: 'Precision-draped overlapping tulip hem accented with hand-sewn freshwater-style pearls and an elasticated comfort waistband.',
+        badge: 'Signature Fit',
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Champagne Ivory', hex: '#F3EFEA', image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=85' },
+          { name: 'Emerald Green', hex: '#0F3D3E', image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85' }
+        ]
+      },
+      {
+        id: 'nc-shl-02',
+        name: 'Dehli Pleated Farshi Gharara Pants',
+        category: 'Shalwars',
+        paletteId: 'emerald-gold',
+        pricePKR: 5800,
+        fabric: 'Pure Crushed Tissue & Raw Silk Lining with Gota Kinari',
+        craftsmanship: 'Traditional knee-gathered flare trimmed with antique gold gota lace—engineered to pair seamlessly with short kurtas.',
+        badge: 'Festive Staple',
+        sizes: ['S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Antique Gold', hex: '#C5A059', image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85' },
+          { name: 'Obsidian Black', hex: '#1E1E1E', image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=85' }
+        ]
+      },
+      {
+        id: 'nc-shw-01',
+        name: 'Kashmiri Kani Heritage Pashmina Shawl',
+        category: 'Shawls',
+        paletteId: 'terracotta-ochre',
+        pricePKR: 22500,
+        fabric: '100% Fine Ladakhi Pashmina Wool (Hand-Loomed)',
+        craftsmanship: 'Woven over 4 months using traditional wooden kani bobbins in intricate chinar leaf and paisley motifs across terracotta and ochre.',
+        badge: 'Heirloom Piece',
+        sizes: ['One Size (100" x 45")'],
+        colors: [
+          { name: 'Terracotta & Ochre', hex: '#9E473B', image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=800&q=85' },
+          { name: 'Ivory & Saffron', hex: '#E8DEC8', image: 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?auto=format&fit=crop&w=800&q=85' }
+        ]
+      },
+      {
+        id: 'nc-shw-02',
+        name: 'Shahi Zardozi Micro-Velvet Shawl',
+        category: 'Shawls',
+        paletteId: 'emerald-gold',
+        pricePKR: 19800,
+        fabric: 'Plush 9000-Grade Micro-Velvet with Silk Backing',
+        craftsmanship: 'Rich emerald velvet framed by a 4-inch antique gold zardozi and dabka border—an opulent drape for winter weddings and evening galas.',
+        badge: 'Couture Luxe',
+        sizes: ['One Size (96" x 44")'],
+        colors: [
+          { name: 'Imperial Emerald', hex: '#0F3D3E', image: 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?auto=format&fit=crop&w=800&q=85' },
+          { name: 'Midnight Plum', hex: '#3B1E32', image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=800&q=85' }
+        ]
+      }
+    ];
+
+    // Application State
+    let state = {
+      selectedCategory: 'All',
+      selectedPaletteId: null,
+      searchQuery: '',
+      sortBy: 'featured',
+      selectedColorIndex: {}, // productId -> index
+      selectedSize: {},       // productId -> size string
+      cart: [],               // Array of { key, productId, name, category, pricePKR, colorName, colorHex, image, size, qty }
+      promoCode: null,        // e.g., 'NAVEED10'
+      discountPercent: 0
+    };
+
+    // Initialize Default Selections for Each Product
+    PRODUCTS.forEach(prod => {
+      state.selectedColorIndex[prod.id] = 0;
+      state.selectedSize[prod.id] = prod.sizes.includes('M') ? 'M' : prod.sizes[0];
+    });
+
+    // =========================================================================
+    // CURRENCY FORMATTING UTILITY
+    // =========================================================================
+    function formatPrice(amountPKR) {
+      if (currentCurrency === 'PKR') {
+        return 'PKR ' + Math.round(amountPKR).toLocaleString('en-US');
+      } else {
+        const usd = (amountPKR / PKR_TO_USD_RATE).toFixed(0);
+        return 'USD $' + Number(usd).toLocaleString('en-US');
+      }
+    }
+
+    function toggleCurrency() {
+      currentCurrency = currentCurrency === 'PKR' ? 'USD' : 'PKR';
+      document.getElementById('currencyLabel').textContent = currentCurrency === 'PKR' ? 'PKR (Rs.)' : 'USD ($)';
+      renderProducts();
+      renderCartDrawer();
+      showToast(`Currency switched to ${currentCurrency}`);
+    }
+
+    // =========================================================================
+    // RENDER SEASONAL COLOR PALETTES
+    // =========================================================================
+    function renderPalettes() {
+      const container = document.getElementById('paletteCardsContainer');
+      container.innerHTML = SEASONAL_PALETTES.map(palette => {
+        const isSelected = state.selectedPaletteId === palette.id;
+        return `
+          <div onclick="selectPalette('${palette.id}')" class="group cursor-pointer rounded-3xl p-5 transition-all duration-300 border ${isSelected ? 'bg-emerald-deep text-ivory border-gold-antique shadow-editorial -translate-y-1' : 'bg-white hover:bg-ivory text-charcoal border-gold-antique/25 hover:border-gold-antique shadow-card'}">
+            <!-- Swatch Bars -->
+            <div class="flex h-16 rounded-2xl overflow-hidden mb-4 border border-black/10 shadow-inner">
+              ${palette.swatches.map(s => `
+                <div style="background-color: ${s.hex}" class="flex-1 h-full relative group/swatch transition-all duration-300 hover:flex-[1.4]">
+                  <span class="opacity-0 group-hover/swatch:opacity-100 transition-opacity absolute bottom-1.5 left-1.5 right-1.5 text-[9px] font-semibold px-1.5 py-0.5 rounded bg-black/60 text-white text-center truncate">
+                    ${s.label}
+                  </span>
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-[10px] uppercase tracking-[0.2em] font-semibold ${isSelected ? 'text-gold-champagne' : 'text-gold-dark'}">
+                ${palette.season}
+              </span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full ${isSelected ? 'bg-white/15 text-ivory' : 'bg-alabaster text-taupe'}">
+                ${palette.fabricTag}
+              </span>
+            </div>
+
+            <h3 class="font-editorial text-2xl font-semibold leading-snug mb-1.5 ${isSelected ? 'text-ivory' : 'text-emerald-deep'}">
+              ${palette.name}
+            </h3>
+            
+            <p class="text-xs leading-relaxed ${isSelected ? 'text-ivory/80' : 'text-taupe'}">
+              ${palette.description}
+            </p>
+
+            <div class="mt-4 pt-3 border-t ${isSelected ? 'border-white/15' : 'border-gold-antique/15'} flex items-center justify-between text-xs font-semibold">
+              <span class="${isSelected ? 'text-gold-champagne' : 'text-emerald-deep'}">
+                ${isSelected ? 'Active Palette Filter' : 'Filter Matching Designs'}
+              </span>
+              <span>&rarr;</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectPalette(paletteId) {
+      if (state.selectedPaletteId === paletteId) {
+        clearPaletteFilter();
+        return;
+      }
+      state.selectedPaletteId = paletteId;
+      const palette = SEASONAL_PALETTES.find(p => p.id === paletteId);
+      
+      document.getElementById('activePaletteBanner').classList.remove('hidden');
+      document.getElementById('activePaletteTitle').textContent = palette.name;
+      
+      renderPalettes();
+      renderProducts();
+      document.getElementById('collections').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function clearPaletteFilter() {
+      state.selectedPaletteId = null;
+      document.getElementById('activePaletteBanner').classList.add('hidden');
+      renderPalettes();
+      renderProducts();
+    }
+
+    // =========================================================================
+    // FILTERING, SEARCH & SORTING
+    // =========================================================================
+    function filterByCategory(category) {
+      state.selectedCategory = category;
+      
+      // Update Tab Styling
+      document.querySelectorAll('.cat-tab').forEach(tab => {
+        if (tab.dataset.cat === category) {
+          tab.classList.remove('bg-alabaster', 'text-charcoal', 'hover:bg-emerald-muted');
+          tab.classList.add('bg-emerald-deep', 'text-ivory', 'shadow-sm');
+        } else {
+          tab.classList.remove('bg-emerald-deep', 'text-ivory', 'shadow-sm');
+          tab.classList.add('bg-alabaster', 'text-charcoal', 'hover:bg-emerald-muted');
+        }
+      });
+
+      renderProducts();
+    }
+
+    function handleSearch(val) {
+      state.searchQuery = val.trim().toLowerCase();
+      renderProducts();
+    }
+
+    function focusSearch() {
+      const input = document.getElementById('searchInput');
+      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => input.focus(), 350);
+    }
+
+    function handleSort(val) {
+      state.sortBy = val;
+      renderProducts();
+    }
+
+    function resetAllFilters() {
+      state.selectedCategory = 'All';
+      state.selectedPaletteId = null;
+      state.searchQuery = '';
+      state.sortBy = 'featured';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('sortSelect').value = 'featured';
+      document.getElementById('activePaletteBanner').classList.add('hidden');
+      filterByCategory('All');
+      renderPalettes();
+    }
+
+    // =========================================================================
+    // RENDER PRODUCT CARDS
+    // =========================================================================
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      const emptyState = document.getElementById('emptyCatalogState');
+
+      let filtered = PRODUCTS.filter(p => {
+        const matchCat = state.selectedCategory === 'All' || p.category === state.selectedCategory;
+        const matchPalette = !state.selectedPaletteId || p.paletteId === state.selectedPaletteId;
+        const matchSearch = !state.searchQuery || 
+          p.name.toLowerCase().includes(state.searchQuery) ||
+          p.category.toLowerCase().includes(state.searchQuery) ||
+          p.fabric.toLowerCase().includes(state.searchQuery);
+        return matchCat && matchPalette && matchSearch;
+      });
+
+      // Apply Sorting
+      if (state.sortBy === 'price-asc') {
+        filtered.sort((a, b) => a.pricePKR - b.pricePKR);
+      } else if (state.sortBy === 'price-desc') {
+        filtered.sort((a, b) => b.pricePKR - a.pricePKR);
+      } else if (state.sortBy === 'name-asc') {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(product => {
+        const activeColorIdx = state.selectedColorIndex[product.id] || 0;
+        const activeColor = product.colors[activeColorIdx];
+        const activeSize = state.selectedSize[product.id];
+
+        return `
+          <article class="product-card bg-white rounded-3xl overflow-hidden border border-gold-antique/25 shadow-card hover:shadow-editorial transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <!-- Image Container -->
+              <div class="relative aspect-[3/4] overflow-hidden bg-alabaster">
+                <img 
+                  src="${activeColor.image}" 
+                  alt="${product.name} - ${activeColor.name}"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x800/0F3D3E/DFC48C?text=${encodeURIComponent(product.name)}';"
+                  class="product-card-img w-full h-full object-cover cursor-pointer"
+                  onclick="openQuickView('${product.id}')"
+                />
+                
+                <!-- Top Badges -->
+                <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
+                  <span class="px-3 py-1 rounded-full bg-ivory/95 backdrop-blur-xs text-[10px] uppercase tracking-wider font-bold text-emerald-deep shadow-xs">
+                    ${product.category}
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-emerald-deep/90 text-[10px] uppercase tracking-wider font-semibold text-gold-champagne">
+                    ${product.badge}
+                  </span>
+                </div>
+
+                <!-- Hover Quick View Action -->
+                <button onclick="openQuickView('${product.id}')" class="absolute bottom-3.5 left-3.5 right-3.5 py-2.5 rounded-full bg-ivory/95 hover:bg-emerald-deep text-emerald-deep hover:text-ivory text-xs uppercase tracking-widest font-semibold shadow-md opacity-95 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 cursor-pointer">
+                  Quick View &amp; Details
+                </button>
+              </div>
+
+              <!-- Card Body -->
+              <div class="p-5 pb-3">
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <!-- Color Swatches -->
+                  <div class="flex items-center gap-2">
+                    ${product.colors.map((c, idx) => `
+                      <button 
+                        onclick="selectProductColor('${product.id}', ${idx})"
+                        title="${c.name}"
+                        aria-label="Select color ${c.name}"
+                        style="background-color: ${c.hex}"
+                        class="w-5 h-5 rounded-full border transition-transform cursor-pointer ${idx === activeColorIdx ? 'ring-2 ring-offset-2 ring-emerald-deep scale-110 border-white' : 'border-black/20 hover:scale-105'}">
+                      </button>
+                    `).join('')}
+                    <span class="text-[11px] text-taupe ml-1">${activeColor.name}</span>
+                  </div>
+                </div>
+
+                <h3 onclick="openQuickView('${product.id}')" class="font-editorial text-2xl font-semibold text-charcoal hover:text-emerald-deep transition cursor-pointer leading-snug">
+                  ${product.name}
+                </h3>
+                
+                <p class="text-xs text-taupe line-clamp-2 mt-1 leading-relaxed">
+                  ${product.fabric}
+                </p>
+              </div>
+            </div>
+
+            <!-- Card Footer: Size Pills, Price & Add to Bag -->
+            <div class="px-5 pb-5 pt-2 space-y-3.5">
+              <!-- Compact Size Selector -->
+              <div class="flex flex-wrap items-center gap-1.5">
+                ${product.sizes.map(sz => `
+                  <button 
+                    onclick="selectProductSize('${product.id}', '${sz}')"
+                    class="px-2.5 py-1 rounded-lg text-[11px] font-semibold transition cursor-pointer border ${activeSize === sz ? 'bg-emerald-deep text-ivory border-emerald-deep' : 'bg-ivory text-charcoal border-gold-antique/30 hover:border-emerald-deep'}">
+                    ${sz}
+                  </button>
+                `).join('')}
+              </div>
+
+              <div class="pt-2.5 border-t border-gold-antique/15 flex items-center justify-between gap-3">
+                <div>
+                  <span class="text-[10px] uppercase tracking-wider text-taupe block">Price</span>
+                  <span class="font-editorial text-xl font-bold text-emerald-deep">${formatPrice(product.pricePKR)}</span>
+                </div>
+
+                <button onclick="addToCart('${product.id}')" class="btn-luxury px-5 py-2.5 rounded-full bg-emerald-deep hover:bg-emerald-light text-ivory text-xs uppercase tracking-wider font-semibold transition shadow-xs cursor-pointer">
+                  + Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function selectProductColor(productId, colorIdx) {
+      state.selectedColorIndex[productId] = colorIdx;
+      renderProducts();
+    }
+
+    function selectProductSize(productId, size) {
+      state.selectedSize[productId] = size;
+      renderProducts();
+    }
+
+    // =========================================================================
+    // QUICK-VIEW MODAL LOGIC
+    // =========================================================================
+    let modalQty = 1;
+
+    function openQuickView(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+      modalQty = 1;
+
+      const renderModalBody = () => {
+        const activeColorIdx = state.selectedColorIndex[product.id] || 0;
+        const activeColor = product.colors[activeColorIdx];
+        const activeSize = state.selectedSize[product.id];
+
+        document.getElementById('quickViewContent').innerHTML = `
+          <div class="md:col-span-6 bg-alabaster relative aspect-[3/4] md:aspect-auto">
+            <img 
+              src="${activeColor.image}" 
+              alt="${product.name}"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x800/0F3D3E/DFC48C?text=${encodeURIComponent(product.name)}';"
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-emerald-deep text-gold-champagne text-xs uppercase tracking-wider font-semibold">
+              ${product.badge}
+            </span>
+          </div>
+
+          <div class="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div>
+                <span class="text-xs uppercase tracking-[0.22em] text-gold-dark font-semibold">${product.category}</span>
+                <h3 class="font-editorial text-3xl sm:text-4xl font-bold text-emerald-deep mt-1 leading-tight">${product.name}</h3>
+                <p class="font-editorial text-2xl font-bold text-terracotta mt-2">${formatPrice(product.pricePKR)}</p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-alabaster/80 border border-gold-antique/25 space-y-2 text-xs sm:text-sm">
+                <p><strong class="text-emerald-deep">Fabric Composition:</strong> <span class="text-charcoal">${product.fabric}</span></p>
+                <p><strong class="text-emerald-deep">Artisanal Craftsmanship:</strong> <span class="text-taupe">${product.craftsmanship}</span></p>
+              </div>
+
+              <!-- Color Selection -->
+              <div>
+                <span class="text-xs uppercase tracking-wider text-taupe font-semibold block mb-2">
+                  Color Variant: <strong class="text-charcoal">${activeColor.name}</strong>
+                </span>
+                <div class="flex items-center gap-3">
+                  ${product.colors.map((c, idx) => `
+                    <button 
+                      onclick="state.selectedColorIndex['${product.id}'] = ${idx}; renderProducts(); (${renderModalBody.toString()})()"
+                      style="background-color: ${c.hex}"
+                      class="w-8 h-8 rounded-full border-2 transition cursor-pointer ${idx === activeColorIdx ? 'ring-2 ring-offset-2 ring-emerald-deep border-white scale-110' : 'border-black/20'}">
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Size Selection -->
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs uppercase tracking-wider text-taupe font-semibold">Select Fit / Tailoring</span>
+                  <button onclick="openSizeGuideModal()" class="text-xs text-emerald-deep underline hover:text-terracotta cursor-pointer">View Size Chart</button>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  ${product.sizes.map(sz => `
+                    <button 
+                      onclick="state.selectedSize['${product.id}'] = '${sz}'; renderProducts(); (${renderModalBody.toString()})()"
+                      class="px-3.5 py-2 rounded-xl text-xs font-semibold border transition cursor-pointer ${activeSize === sz ? 'bg-emerald-deep text-ivory border-emerald-deep' : 'bg-white text-charcoal border-gold-antique/35 hover:border-emerald-deep'}">
+                      ${sz}
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+
+            <!-- Quantity & Add to Bag -->
+            <div class="pt-4 border-t border-gold-antique/20 flex items-center gap-3">
+              <div class="flex items-center border border-gold-antique/40 rounded-full bg-white px-2 py-1">
+                <button onclick="if(modalQty > 1) { modalQty--; document.getElementById('modalQtyVal').textContent = modalQty; }" class="w-8 h-8 rounded-full hover:bg-alabaster text-charcoal font-bold cursor-pointer">-</button>
+                <span id="modalQtyVal" class="w-8 text-center text-sm font-semibold">${modalQty}</span>
+                <button onclick="modalQty++; document.getElementById('modalQtyVal').textContent = modalQty;" class="w-8 h-8 rounded-full hover:bg-alabaster text-charcoal font-bold cursor-pointer">+</button>
+              </div>
+
+              <button onclick="addToCart('${product.id}', modalQty); closeQuickView();" class="btn-luxury flex-1 py-3.5 px-6 rounded-full bg-emerald-deep hover:bg-emerald-light text-ivory text-xs uppercase tracking-[0.2em] font-semibold shadow-editorial cursor-pointer">
+                Add to Shopping Bag
+              </button>
+            </div>
+          </div>
+        `;
+      };
+
+      renderModalBody();
+      const modal = document.getElementById('quickViewModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeQuickView() {
+      const modal = document.getElementById('quickViewModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function openSizeGuideModal() {
+      const m = document.getElementById('sizeGuideModal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeSizeGuideModal() {
+      const m = document.getElementById('sizeGuideModal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    // =========================================================================
+    // SHOPPING BAG & CART OPERATIONS
+    // =========================================================================
+    function addToCart(productId, quantity = 1) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const colorIdx = state.selectedColorIndex[productId] || 0;
+      const colorObj = product.colors[colorIdx];
+      const size = state.selectedSize[productId];
+      const itemKey = `${productId}_${colorObj.name}_${size}`;
+
+      const existing = state.cart.find(item => item.key === itemKey);
+      if (existing) {
+        existing.qty += quantity;
+      } else {
+        state.cart.push({
+          key: itemKey,
+          productId: product.id,
+          name: product.name,
+          category: product.category,
+          pricePKR: product.pricePKR,
+          colorName: colorObj.name,
+          colorHex: colorObj.hex,
+          image: colorObj.image,
+          size: size,
+          qty: quantity
+        });
+      }
+
+      updateCartBadge();
+      renderCartDrawer();
+      showToast(`Added "${product.name}" (${size}) to your bag.`);
+    }
+
+    function updateCartItemQty(key, delta) {
+      const idx = state.cart.findIndex(item => item.key === key);
+      if (idx === -1) return;
+
+      state.cart[idx].qty += delta;
+      if (state.cart[idx].qty <= 0) {
+        state.cart.splice(idx, 1);
+      }
+
+      updateCartBadge();
+      renderCartDrawer();
+    }
+
+    function removeCartItem(key) {
+      state.cart = state.cart.filter(item => item.key !== key);
+      updateCartBadge();
+      renderCartDrawer();
+    }
+
+    function updateCartBadge() {
+      const totalItems = state.cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cartBadge').textContent = totalItems;
+      document.getElementById('drawerItemCountText').textContent = `${totalItems} ${totalItems === 1 ? 'piece' : 'pieces'} selected`;
+    }
+
+    function calculateTotals() {
+      const subtotalPKR = state.cart.reduce((sum, item) => sum + (item.pricePKR * item.qty), 0);
+      const discountPKR = Math.round(subtotalPKR * (state.discountPercent / 100));
+      const afterDiscount = subtotalPKR - discountPKR;
+      const shippingPKR = (afterDiscount >= 12000 || afterDiscount === 0) ? 0 : 350;
+      const grandTotalPKR = afterDiscount + shippingPKR;
+
+      return { subtotalPKR, discountPKR, shippingPKR, grandTotalPKR };
+    }
+
+    function applyPromoCode() {
+      const input = document.getElementById('promoCodeInput');
+      const feedback = document.getElementById('promoFeedback');
+      const code = input.value.trim().toUpperCase();
+
+      if (!code) return;
+
+      if (code === 'NAVEED10' || code === 'COUTURE10') {
+        state.promoCode = code;
+        state.discountPercent = 10;
+        feedback.textContent = `Privilege code ${code} applied! 10% savings unlocked.`;
+        feedback.className = 'text-xs mt-1.5 text-emerald-deep font-semibold block';
+        showToast('10% Atelier discount applied!');
+      } else if (code === 'HERITAGE15') {
+        state.promoCode = code;
+        state.discountPercent = 15;
+        feedback.textContent = `VIP code ${code} applied! 15% savings unlocked.`;
+        feedback.className = 'text-xs mt-1.5 text-emerald-deep font-semibold block';
+        showToast('15% VIP discount applied!');
+      } else {
+        feedback.textContent = 'Invalid code. Try NAVEED10 for 10% off your order.';
+        feedback.className = 'text-xs mt-1.5 text-terracotta font-medium block';
+      }
+
+      renderCartDrawer();
+    }
+
+    function renderCartDrawer() {
+      const container = document.getElementById('cartItemsContainer');
+      const footer = document.getElementById('cartDrawerFooter');
+
+      if (state.cart.length === 0) {
+        footer.classList.add('hidden');
+        container.innerHTML = `
+          <div class="h-full flex flex-col items-center justify-center text-center py-12 px-4">
+            <div class="w-16 h-16 rounded-full bg-alabaster border border-gold-antique/30 flex items-center justify-center text-gold-dark mb-4">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/></svg>
+            </div>
+            <h4 class="font-editorial text-2xl font-semibold text-emerald-deep">Your Bag is Empty</h4>
+            <p class="text-xs text-taupe mt-1 max-w-xs leading-relaxed">
+              Discover our hand-crafted 3-piece suits, executive kurta-dupatta sets, and Kashmiri shawls.
+            </p>
+            <button onclick="closeCartDrawer()" class="mt-6 px-6 py-2.5 rounded-full bg-emerald-deep text-ivory text-xs uppercase tracking-widest font-semibold cursor-pointer">
+              Explore Couture
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      footer.classList.remove('hidden');
+
+      container.innerHTML = state.cart.map(item => `
+        <div class="flex gap-4 p-3.5 rounded-2xl bg-white border border-gold-antique/20 shadow-xs">
+          <img 
+            src="${item.image}" 
+            alt="${item.name}"
+            onerror="this.onerror=null; this.src='https://placehold.co/120x160/0F3D3E/DFC48C?text=Naveed';"
+            class="w-20 h-24 rounded-xl object-cover flex-shrink-0 bg-alabaster"
+          />
+          <div class="flex-1 min-w-0 flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2">
+                <h4 class="font-editorial text-lg font-semibold text-charcoal leading-snug truncate">${item.name}</h4>
+                <button onclick="removeCartItem('${item.key}')" aria-label="Remove item" class="text-taupe hover:text-terracotta transition cursor-pointer">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+              </div>
+              <p class="text-xs text-taupe mt-0.5">
+                <span class="inline-block w-2.5 h-2.5 rounded-full mr-1 align-middle" style="background-color:${item.colorHex}"></span>
+                ${item.colorName} &bull; Size: <strong class="text-charcoal">${item.size}</strong>
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between mt-3">
+              <div class="flex items-center border border-gold-antique/35 rounded-full bg-ivory px-1.5 py-0.5">
+                <button onclick="updateCartItemQty('${item.key}', -1)" class="w-6 h-6 text-xs font-bold text-charcoal hover:text-emerald-deep cursor-pointer">-</button>
+                <span class="w-6 text-center text-xs font-semibold">${item.qty}</span>
+                <button onclick="updateCartItemQty('${item.key}', 1)" class="w-6 h-6 text-xs font-bold text-charcoal hover:text-emerald-deep cursor-pointer">+</button>
+              </div>
+              <span class="font-editorial text-base font-bold text-emerald-deep">
+                ${formatPrice(item.pricePKR * item.qty)}
+              </span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Update Totals
+      const { subtotalPKR, discountPKR, shippingPKR, grandTotalPKR } = calculateTotals();
+      document.getElementById('cartSubtotal').textContent = formatPrice(subtotalPKR);
+      
+      const discountRow = document.getElementById('discountRow');
+      if (discountPKR > 0) {
+        discountRow.classList.remove('hidden');
+        document.getElementById('appliedPromoLabel').textContent = state.promoCode;
+        document.getElementById('cartDiscount').textContent = '- ' + formatPrice(discountPKR);
+      } else {
+        discountRow.classList.add('hidden');
+      }
+
+      document.getElementById('cartShipping').textContent = shippingPKR === 0 ? 'Complimentary' : formatPrice(shippingPKR);
+      document.getElementById('cartTotal').textContent = formatPrice(grandTotalPKR);
+    }
+
+    function openCartDrawer() {
+      renderCartDrawer();
+      const backdrop = document.getElementById('cartDrawerBackdrop');
+      const panel = document.getElementById('cartDrawerPanel');
+      backdrop.classList.remove('hidden');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        panel.classList.remove('translate-x-full');
+      }, 10);
+    }
+
+    function closeCartDrawer() {
+      const backdrop = document.getElementById('cartDrawerBackdrop');
+      const panel = document.getElementById('cartDrawerPanel');
+      backdrop.classList.add('opacity-0');
+      panel.classList.add('translate-x-full');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+      }, 350);
+    }
+
+    // =========================================================================
+    // CHECKOUT & ORDER COMPLETION FLOW
+    // =========================================================================
+    function openCheckoutModal() {
+      if (state.cart.length === 0) return;
+      closeCartDrawer();
+
+      // Reset views to Form Step
+      document.getElementById('checkoutFormView').classList.remove('hidden');
+      document.getElementById('orderConfirmationView').classList.add('hidden');
+
+      // Populate Order Summary
+      const summaryContainer = document.getElementById('checkoutSummaryItems');
+      summaryContainer.innerHTML = state.cart.map(item => `
+        <div class="py-3 flex items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <img src="${item.image}" alt="${item.name}" class="w-11 h-14 rounded-lg object-cover bg-white"/>
+            <div class="truncate">
+              <p class="font-semibold text-charcoal truncate">${item.name}</p>
+              <p class="text-taupe">${item.colorName} &bull; ${item.size} &times; ${item.qty}</p>
+            </div>
+          </div>
+          <span class="font-semibold text-emerald-deep whitespace-nowrap">${formatPrice(item.pricePKR * item.qty)}</span>
+        </div>
+      `).join('');
+
+      const { subtotalPKR, discountPKR, shippingPKR, grandTotalPKR } = calculateTotals();
+      document.getElementById('checkoutSubtotal').textContent = formatPrice(subtotalPKR);
+      
+      const dRow = document.getElementById('checkoutDiscountRow');
+      if (discountPKR > 0) {
+        dRow.classList.remove('hidden');
+        document.getElementById('checkoutDiscount').textContent = '- ' + formatPrice(discountPKR);
+      } else {
+        dRow.classList.add('hidden');
+      }
+
+      document.getElementById('checkoutShipping').textContent = shippingPKR === 0 ? 'Complimentary' : formatPrice(shippingPKR);
+      document.getElementById('checkoutGrandTotal').textContent = formatPrice(grandTotalPKR);
+
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function togglePaymentFields(method) {
+      const cardBox = document.getElementById('cardPaymentFields');
+      const walletBox = document.getElementById('walletPaymentFields');
+      cardBox.classList.add('hidden');
+      walletBox.classList.add('hidden');
+
+      if (method === 'Credit / Debit Card') {
+        cardBox.classList.remove('hidden');
+      } else if (method === 'JazzCash / EasyPaisa') {
+        walletBox.classList.remove('hidden');
+      }
+    }
+
+    function formatCardNumber(input) {
+      let val = input.value.replace(/\D/g, '').substring(0, 16);
+      input.value = val.replace(/(.{4})/g, '$1 ').trim();
+    }
+
+    function submitOrder(e) {
+      e.preventDefault();
+
+      const custName = document.getElementById('custName').value.trim();
+      const custCity = document.getElementById('custCity').value;
+      const custAddress = document.getElementById('custAddress').value.trim();
+      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+      const { grandTotalPKR } = calculateTotals();
+      const randomOrderNum = Math.floor(1000 + Math.random() * 9000);
+      const orderId = `#NC-2026-${randomOrderNum}`;
+      const todayStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+      // Populate Receipt
+      document.getElementById('receiptOrderId').textContent = orderId;
+      document.getElementById('receiptDate').textContent = todayStr;
+      document.getElementById('receiptCustomer').textContent = custName;
+      document.getElementById('receiptPayment').textContent = paymentMethod;
+      document.getElementById('receiptAddress').textContent = `${custAddress}, ${custCity}`;
+      document.getElementById('receiptTotalAmount').textContent = formatPrice(grandTotalPKR);
+
+      document.getElementById('receiptItemsList').innerHTML = state.cart.map(item => `
+        <div class="py-2.5 flex justify-between items-center gap-4">
+          <div>
+            <p class="font-semibold text-charcoal">${item.name} <span class="text-taupe font-normal">&times; ${item.qty}</span></p>
+            <p class="text-xs text-taupe">${item.colorName} &bull; Size ${item.size}</p>
+          </div>
+          <span class="font-semibold text-emerald-deep">${formatPrice(item.pricePKR * item.qty)}</span>
+        </div>
+      `).join('');
+
+      // Switch to Confirmation Screen
+      document.getElementById('checkoutFormView').classList.add('hidden');
+      document.getElementById('orderConfirmationView').classList.remove('hidden');
+      showToast(`Order ${orderId} confirmed!`);
+    }
+
+    function finishOrderAndReset() {
+      state.cart = [];
+      state.promoCode = null;
+      state.discountPercent = 0;
+      document.getElementById('promoCodeInput').value = '';
+      document.getElementById('promoFeedback').classList.add('hidden');
+      updateCartBadge();
+      closeCheckoutModal();
+    }
+
+    // =========================================================================
+    // UI HELPERS: MOBILE MENU, NEWSLETTER & TOAST NOTIFICATIONS
+    // =========================================================================
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    function handleNewsletter(e) {
+      e.preventDefault();
+      e.target.reset();
+      showToast('Welcome to the Naveed Cloth Private Preview List.');
+    }
+
+    function showToast(message) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'pointer-events-auto flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-emerald-deep text-ivory text-xs sm:text-sm font-medium shadow-2xl border border-gold-antique/50 transform transition-all duration-300 translate-y-4 opacity-0';
+      toast.innerHTML = `
+        <span class="w-2 h-2 rounded-full bg-gold-champagne flex-shrink-0"></span>
+        <span>${message}</span>
+      `;
+      container.appendChild(toast);
+
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-4', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-4', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+
+    // Initial Render on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderPalettes();
+      renderProducts();
+      updateCartBadge();
+    });
+  </script>
+</body>
+</html>
